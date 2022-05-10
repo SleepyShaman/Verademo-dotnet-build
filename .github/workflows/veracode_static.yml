@@ -29,9 +29,9 @@ jobs:
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
     runs-on: ubuntu-latest
     
-    strategy:
-      matrix:
-        dotnet-version: ['5.0.x', '6.0.x']
+    #strategy:
+    #  matrix:
+    #    dotnet-version: ['5.0.x', '6.0.x']
         
     steps:
 
@@ -56,9 +56,7 @@ jobs:
 #    - name: Test
 #      run: dotnet test --no-restore --verbosity normal
 
-    - run: |
-        ls -ltrha
-        zip -r veracode-scan-target.zip ./Verademo-Dotnet/bin/
+    - run: zip -r veracode-scan-target.zip ./Verademo-Dotnet/bin/
     
     # download the Veracode Static Analysis Pipeline scan jar
     - run: curl --silent --show-error --fail -O https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
@@ -69,7 +67,8 @@ jobs:
       with:
         java-version: 8
         distribution: 'temurin'
-    - run: java -jar pipeline-scan.jar --veracode_api_id "${{secrets.VERACODE_API_ID}}" --veracode_api_key "${{secrets.VERACODE_API_KEY}}" --fail_on_severity="Very High, High, Medium, Low" --file veracode-scan-target.zip --verbose=true
+#    - run: java -jar pipeline-scan.jar --veracode_api_id "${{secrets.VERACODE_API_ID}}" --veracode_api_key "${{secrets.VERACODE_API_KEY}}" --fail_on_severity="Very High, High, Medium, Low" --file veracode-scan-target.zip --verbose=true
+    - run: java -jar pipeline-scan.jar --veracode_api_id "${{secrets.VERACODE_API_ID}}" --veracode_api_key "${{secrets.VERACODE_API_KEY}}" --fail_on_severity="Very High, High, Medium, Low" --file veracode-scan-target.zip
       continue-on-error: true
     - name: Convert pipeline scan output to SARIF format
       id: convert
