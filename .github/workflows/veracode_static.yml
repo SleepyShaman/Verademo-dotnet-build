@@ -56,7 +56,9 @@ jobs:
 #    - name: Test
 #      run: dotnet test --no-restore --verbosity normal
 
-    - run: zip -r veracode-scan-target.zip ./Verademo-dotnet/bin/
+    - run: |
+        ls -ltrha
+        zip -r veracode-scan-target.zip ./bin/
     
     # download the Veracode Static Analysis Pipeline scan jar
     - run: curl --silent --show-error --fail -O https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
