@@ -58,7 +58,7 @@ jobs:
 
     - run: |
         ls -ltrha
-        zip -r veracode-scan-target.zip ./bin/
+        zip -r veracode-scan-target.zip ./Verademo-Dotnet/bin/
     
     # download the Veracode Static Analysis Pipeline scan jar
     - run: curl --silent --show-error --fail -O https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
