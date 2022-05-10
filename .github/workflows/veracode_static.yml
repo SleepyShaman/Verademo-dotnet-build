@@ -68,7 +68,7 @@ jobs:
         java-version: 8
         distribution: 'temurin'
 #    - run: java -jar pipeline-scan.jar --veracode_api_id "${{secrets.VERACODE_API_ID}}" --veracode_api_key "${{secrets.VERACODE_API_KEY}}" --fail_on_severity="Very High, High, Medium, Low" --file veracode-scan-target.zip --verbose=true
-    - run: java -jar pipeline-scan.jar --veracode_api_id "${{secrets.VERACODE_API_ID}}" --veracode_api_key "${{secrets.VERACODE_API_KEY}}" --fail_on_severity="Very High, High, Medium, Low" --file veracode-scan-target.zip --app_id="1424641"
+    - run: java -jar pipeline-scan.jar --veracode_api_id "${{secrets.VERACODE_API_ID}}" --veracode_api_key "${{secrets.VERACODE_API_KEY}}" --fail_on_severity="Very High, High, Medium, Low" --file veracode-scan-target.zip --app_id="1424641" --project_name="Verademo-dotnet-build" --project_url="https://github.com/SleepyShaman/Verademo-dotnet-build/"
       continue-on-error: true
     - name: Convert pipeline scan output to SARIF format
       id: convert
