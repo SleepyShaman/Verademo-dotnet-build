@@ -68,7 +68,7 @@ jobs:
         java-version: 8
         distribution: 'temurin'
 #    - run: java -jar pipeline-scan.jar --veracode_api_id "${{secrets.VERACODE_API_ID}}" --veracode_api_key "${{secrets.VERACODE_API_KEY}}" --fail_on_severity="Very High, High, Medium, Low" --file veracode-scan-target.zip --verbose=true
-    - run: java -jar pipeline-scan.jar --veracode_api_id "${{secrets.VERACODE_API_ID}}" --veracode_api_key "${{secrets.VERACODE_API_KEY}}" --fail_on_severity="Very High, High, Medium, Low" --file veracode-scan-target.zip --app_id="e9405565-577e-40ac-8cc0-283cd3628921"
+    - run: java -jar pipeline-scan.jar --veracode_api_id "${{secrets.VERACODE_API_ID}}" --veracode_api_key "${{secrets.VERACODE_API_KEY}}" --fail_on_severity="Very High, High, Medium, Low" --file veracode-scan-target.zip --app_id="1431035"
       continue-on-error: true
     - name: Convert pipeline scan output to SARIF format
       id: convert
