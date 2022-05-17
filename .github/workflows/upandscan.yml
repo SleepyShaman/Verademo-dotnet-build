@@ -1,8 +1,12 @@
+# Veracode Upload and Scan @ GitHub template
+
+
 name: Veracode Static Analysis Demo
 on: workflow_dispatch
 
 env:
   zipname: 'veracode-scan-target'
+  folderToPack: './Verademo-Dotnet/bin/'
     
 jobs:
   static_analysis:
@@ -14,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Package App binaries
-        run: zip -r ${{ env.zipname }}.zip ./Verademo-Dotnet/bin/
+        run: zip -r ${{ env.zipname }}.zip ${{ env.folderToPack }}
 
 #      - name: Build with Maven # Compiling the .war binary from the checked out repo source code to upload to the scanner in the next step
 #        run: mvn -B package --file app/pom.xml
